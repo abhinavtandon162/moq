@@ -36,7 +36,7 @@ public class MyController {
 	@RequestMapping(value = "/retrieve_Query")
 	public String retrieveEmployee(@ModelAttribute("query") Query query,BindingResult result,
 			Model model) {
-		Query QueryRes = iqueryservice.fetch(query.getId());
+		Query QueryRes = iqueryservice.updateQuery(query);
 		String target=null;
 		if(QueryRes==null || QueryRes.getId()==0)
 		{
@@ -68,13 +68,13 @@ public class MyController {
 		
 		
 		model.addAttribute("QueryRes", query);
-		return "Update_trainee";
+		return "Update_Trainee";
 	}
 
 	@RequestMapping(value = "/Update_Persisted_Query")
 	public String updatedQuery(@ModelAttribute("QueryRes") Query query,
 			Model model) {
-		// Trainee trainee=new Trainee();
+		
 		query.setId(query.getId());
 		query.setTechnology(query.getTechnology());
 	query.setQuery(query.getQuery());
